@@ -4,9 +4,20 @@
 // Tornar essa lógica reutilizável em qualquer página
 
 import { ref } from "vue";
+export interface Product {
+  id: number;
+  title: string;
+  price: number;
+  image: string;
+  category: string;
+  rating: {
+    rate: number;
+    count: number;
+  };
+}
 
 export function useProducts() {
-  const products = ref<any[]>([]);
+  const products = ref<Product[]>([]);
   const categories = ref<string[]>([]);
   const loading = ref(false);
   const error = ref<string | null>(null);
@@ -16,7 +27,6 @@ export function useProducts() {
     error.value = null;
 
     try {
-      // Faz as duas requisições em paralelo
       const [prodRes, catRes] = await Promise.all([
         fetch("https://fakestoreapi.com/products"),
         fetch("https://fakestoreapi.com/products/categories"),

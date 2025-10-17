@@ -3,13 +3,16 @@
 // Controlar carregamento (loading) e erros (error)
 // Tornar essa lógica reutilizável em qualquer página
 
+// composables/useProducts.ts
 import { ref } from "vue";
+
 export interface Product {
   id: number;
   title: string;
   price: number;
   image: string;
   category: string;
+  description?: string;
   rating: {
     rate: number;
     count: number;
@@ -32,8 +35,9 @@ export function useProducts() {
         fetch("https://fakestoreapi.com/products/categories"),
       ]);
 
-      if (!prodRes.ok || !catRes.ok)
-        throw new Error(`Erro HTTP: ${prodRes.status} ou ${catRes.status}`);
+      if (!prodRes.ok || !catRes.ok) {
+        throw new Error(`Erro HTTP: ${prodRes.status} / ${catRes.status}`);
+      }
 
       products.value = await prodRes.json();
       categories.value = await catRes.json();

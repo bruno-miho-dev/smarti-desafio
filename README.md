@@ -81,7 +81,7 @@ src/
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/seuusuario/smarti-desafio.git
+git clone https://github.com/bruno-miho-dev/smarti-desafio.git
 cd smarti-desafio
 ```
 

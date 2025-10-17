@@ -44,7 +44,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Product } from "@/composables/useProducts";
+import { Product } from "@/composables/useProducts";
 import { defineProps } from "vue";
 
 const props = defineProps<{ product: Product }>();

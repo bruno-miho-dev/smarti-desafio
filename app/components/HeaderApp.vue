@@ -4,24 +4,24 @@
   >
     <nav class="max-w-6xl mx-auto flex items-center justify-between px-6 py-3">
       <div class="flex items-center gap-4">
-        <NuxtLink to="/produtos" class="text-2xl font-bold text-blue-600"
+        <NuxtLink to="/produtos" class="text-2xl font-bold text-yellow-500"
           >🛍️ Smarti Store</NuxtLink
         >
       </div>
 
       <div class="flex items-center gap-4">
-        <NuxtLink to="/produtos" class="text-gray-700 hover:text-blue-600"
+        <NuxtLink to="/produtos" class="text-gray-700 hover:text-yellow-600"
           >Produtos</NuxtLink
         >
 
         <NuxtLink
           to="/carrinho"
-          class="relative text-gray-700 hover:text-blue-600"
+          class="relative text-gray-700 hover:text-yellow-600"
         >
           Carrinho
           <span
             v-if="count > 0"
-            class="absolute -top-2 -right-4 bg-blue-600 text-white text-xs font-bold px-2 py-0.5 rounded-full"
+            class="absolute -top-2 -right-4 bg-yellow-600 text-white text-xs font-bold px-2 py-0.5 rounded-full"
           >
             {{ count }}
           </span>

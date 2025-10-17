@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import ProductCard from "@/components/ProductCard.vue";
-import type { Product } from "@/composables/useProducts";
+import { Product } from "@/composables/useProducts";
 import { defineProps } from "vue";
 
 const props = defineProps<{ products: Product[] }>();

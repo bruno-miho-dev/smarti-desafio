@@ -75,7 +75,8 @@ const filteredProducts = computed(() => {
 
 const onAddToCart = (product: any) => {
   cart.add(product);
-  // optional: small delay for UX
+
+  alert("Produto adicionado no carrinho!");
   setTimeout(() => router.push("/carrinho"), 200);
 };
 </script>

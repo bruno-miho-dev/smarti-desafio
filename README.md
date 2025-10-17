@@ -43,10 +43,10 @@ Este projeto foi desenvolvido como parte do desafio técnico da **Smarti**, com 
 ```
 src/
 ├── components/
-│   ├── Header.vue
+│   ├── HeaderApp.vue
 │   ├── ProductCard.vue
 │   ├── ProductList.vue
-│   └── CartItem.vue
+│
 │
 ├── composables/
 │   ├── useProducts.ts
@@ -58,6 +58,7 @@ src/
 ├── pages/
 │   ├── produtos.vue
 │   └── carrinho.vue
+│   └── index.vue
 │
 └── tests/
     └── cartStore.test.ts
@@ -98,7 +99,7 @@ npm run dev
 
 O projeto estará disponível em:
 
-> http://localhost:3000/produtos
+> http://localhost:3000/
 
 ---
 
@@ -123,28 +124,7 @@ npx vitest --ui
 - `tests/cartStore.test.ts`
   - Adicionar produtos
   - Remover produtos
-  - Limpar carrinho
-  - Calcular total corretamente
   - Atualizar quantidades
-
----
-
-## 💅 Boas Práticas Aplicadas
-
-- Separação de responsabilidades entre **composables**, **stores** e **components**
-- Reatividade otimizada com Composition API
-- Código organizado e tipado com **TypeScript**
-- Estilo consistente via **Tailwind CSS**
-- Componentes reutilizáveis e responsivos
-
----
-
-## 🧠 Possíveis Melhorias Futuras
-
-- Adicionar **autenticação** de usuário
-- Implementar **checkout real**
-- Criar **testes de interface (componentes)** com `@vue/test-utils`
-- Adicionar **animações** e feedback visual
 
 ---
 

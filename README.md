@@ -1,96 +1,162 @@
-# Desafio Técnico - Smarti Store
+# 🛍️ Smarti Desafio - Loja de Produtos (Nuxt 4 + Pinia)
 
-Aplicação desenvolvida em **Nuxt 4 + Vue 3 + Pinia + TailwindCSS** que simula um **Catálogo de Produtos com Carrinho de Compras**, consumindo a API pública [FakeStore API](https://fakestoreapi.com/products).
-
----
-
-## Funcionalidades
-
-### Requisitos obrigatórios implementados:
-
-- Listagem de produtos com **imagem, título e preço**.
-- **Adicionar e remover produtos do carrinho**.
-- **Atualização em tempo real do total de itens e valor total do carrinho**.
-- Controle de estado global utilizando **Pinia**.
-- Rotas básicas implementadas:
-  - `/produtos` → Listagem de produtos
-  - `/carrinho` → Carrinho de compras
-- Utilização da **Composition API**.
-- **Boas práticas de componentização** e layout responsivo.
-
-### Diferenciais implementados:
-
-- **Filtro por categoria**.
-- **Busca por nome**.
-- Persistência do carrinho no **localStorage**.
-- **Exibição da avaliação (rating) em estrelas** e quantidade de avaliações.
-- Atualização dinâmica do carrinho sem precisar navegar entre páginas.
+Este projeto foi desenvolvido como parte do desafio técnico da **Smarti**, com o objetivo de criar uma aplicação de e-commerce simples utilizando **Nuxt 4**, **Composition API** e **Pinia** para gerenciamento de estado.
 
 ---
 
-## Tecnologias utilizadas
+## 🚀 Tecnologias Utilizadas
 
-- [Nuxt 4](https://nuxt.com) – Meta-framework Vue 3
-- [Vue 3](https://vuejs.org) – Framework JavaScript
-- [Pinia](https://pinia.vuejs.org) – Gerenciamento de estado global
-- [TailwindCSS](https://tailwindcss.com) – Estilização rápida e responsiva
-- [FakeStore API](https://fakestoreapi.com/products) – API pública para produtos
-- Font Awesome – Ícones de estrelas para rating
+- [Nuxt 4](https://nuxt.com/)
+- [Vue 3 - Composition API](https://vuejs.org/guide/introduction.html)
+- [Pinia](https://pinia.vuejs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Vitest](https://vitest.dev/) (para testes unitários)
 
 ---
 
-## Estrutura do projeto
+## 📋 Funcionalidades
+
+### ✅ Requisitos Obrigatórios
+
+- [x] Listar produtos com **imagem**, **título** e **preço**
+- [x] **Adicionar e remover** produtos do carrinho
+- [x] Exibir **total de itens** e **valor total** do carrinho
+- [x] Utilizar **Pinia** como controle de estado global
+- [x] Implementar rotas básicas:
+  - `/produtos` → listagem de produtos
+  - `/carrinho` → visualização e controle do carrinho
+- [x] Uso da **Composition API**
+- [x] Boas práticas de **componentização** e **responsividade**
+
+### ⭐ Diferenciais Implementados
+
+- [x] **Filtro por categoria**
+- [x] **Busca por nome**
+- [x] **Persistência de dados no localStorage**
+- [x] **Testes unitários** (store de carrinho)
+
+---
+
+## 🧩 Estrutura do Projeto
 
 ```
-.
-├── components
-│   ├── HeaderApp.vue
-│   └── ProductList.vue
-├── composables
+src/
+├── components/
+│   ├── Header.vue
+│   ├── ProductCard.vue
+│   ├── ProductList.vue
+│   └── CartItem.vue
+│
+├── composables/
+│   ├── useProducts.ts
 │   └── useCart.ts
-├── pages
+│
+├── stores/
+│   └── cartStore.ts
+│
+├── pages/
 │   ├── produtos.vue
 │   └── carrinho.vue
-├── stores
-│   └── cartStore.ts
-├── assets
-│   └── (imagens, ícones)
-├── nuxt.config.ts
-└── README.md
+│
+└── tests/
+    └── cartStore.test.ts
 ```
 
 ---
 
-## Como rodar o projeto
+## 🧠 Fluxo Principal
 
-1. **Instalar dependências**
+1. A listagem de produtos é carregada via `useProducts.ts` a partir da API pública `https://fakestoreapi.com/products`.
+2. O usuário pode filtrar produtos por **categoria** ou **nome**.
+3. Ao clicar em **“Adicionar ao carrinho”**, o item é salvo globalmente via **Pinia**.
+4. O carrinho é persistido no `localStorage`, garantindo que os dados permaneçam após o reload.
+5. O **Header** exibe a quantidade total e o valor em tempo real.
+
+---
+
+## ⚙️ Como Rodar o Projeto
+
+### 1. Clone o repositório
+
+```bash
+git clone https://github.com/seuusuario/smarti-desafio.git
+cd smarti-desafio
+```
+
+### 2. Instale as dependências
+
 ```bash
 npm install
-# ou
-yarn install
 ```
 
-2. **Rodar a aplicação em modo de desenvolvimento**
+### 3. Execute o servidor de desenvolvimento
+
 ```bash
 npm run dev
-# ou
-yarn dev
 ```
 
-3. Abra o navegador em `http://localhost:3000/produtos`  
+O projeto estará disponível em:
+
+> http://localhost:3000/produtos
 
 ---
 
-## Observações
+## 🧪 Testes Unitários
 
-- O carrinho é persistido no `localStorage`, então ao atualizar a página, os itens permanecem.
-- Ao adicionar um produto na página de produtos, você é redirecionado automaticamente para o carrinho.
-- O total de itens e valor total do carrinho é atualizado **imediatamente** ao alterar quantidade ou remover produtos.
+Os testes foram feitos utilizando **Vitest** e garantem o funcionamento correto da store global de carrinho (`cartStore`).
+
+### Executar todos os testes:
+
+```bash
+npx vitest
+```
+
+### Executar com interface visual:
+
+```bash
+npx vitest --ui
+```
+
+### Estrutura de Teste:
+
+- `tests/cartStore.test.ts`
+  - Adicionar produtos
+  - Remover produtos
+  - Limpar carrinho
+  - Calcular total corretamente
+  - Atualizar quantidades
 
 ---
 
-## Próximos passos/diferenciais não implementados
+## 💅 Boas Práticas Aplicadas
 
-- Testes unitários dos componentes.
-- Filtros avançados por preço ou múltiplas categorias.
-- Checkout real com integração de pagamento.
+- Separação de responsabilidades entre **composables**, **stores** e **components**
+- Reatividade otimizada com Composition API
+- Código organizado e tipado com **TypeScript**
+- Estilo consistente via **Tailwind CSS**
+- Componentes reutilizáveis e responsivos
+
+---
+
+## 🧠 Possíveis Melhorias Futuras
+
+- Adicionar **autenticação** de usuário
+- Implementar **checkout real**
+- Criar **testes de interface (componentes)** com `@vue/test-utils`
+- Adicionar **animações** e feedback visual
+
+---
+
+## 👨‍💻 Autor
+
+**Bruno Miho**  
+Desenvolvido como parte do desafio técnico para a **Smarti**  
+📧 [bruno.miho.dev@gmail.com]  
+🔗 [LinkedIn](https://www.linkedin.com/in/brunomiho/)
+
+---
+
+### 🏁 Status
+
+✅ Projeto finalizado com todos os requisitos obrigatórios e diferenciais implementados com **Nuxt 4**.

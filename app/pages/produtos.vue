@@ -38,8 +38,16 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
 import { useProducts } from "@/composables/useProducts";
+import { useCart } from "@/composables/useCart";
+const cart = useCart();
 
 const { products, loading, error, fetchProducts } = useProducts();
+
+const addToCart = (product: Product) => {
+  cart.add(product);
+  // Opcional: navegar para /carrinho
+  router.push("/carrinho");
+};
 
 onMounted(() => {
   fetchProducts();
